@@ -1,19 +1,27 @@
 package self.java8.stream;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
+
 public class Basics {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 //		arrayStream();
 //		System.err.println();
 //		arrayListStream();
 //		System.out.println();
 //		reduceStreamInteger();
-		reduceStreamDouble();
+//		reduceStreamDouble();
+//		reduceStreamArrayList();
+//		reduceStreamArray();
+		readFromFile();
 	}
 	
+
 	private static void arrayStream() {
 		
 		//For arrays (int[]), a data structure, use Arrays.stream or Stream.of
@@ -50,4 +58,31 @@ public class Basics {
 		System.out.println(total);
 		System.out.println();
 	}
+	
+	private static void reduceStreamArrayList() {
+		ArrayList<Integer> list = new ArrayList<>();
+		list.add(3);
+		list.add(5);
+		list.add(6);
+		Integer totoal = list.stream().reduce(0, (Integer a, Integer b) -> a + b);
+		System.out.println(totoal);
+	}
+	
+	private static void reduceStreamArray() {
+//		Integer[] array = {2, 3, 5, 6};
+//		Integer total = Arrays.stream(array).reduce(0, (Integer a, Integer b) -> a + b);
+		Integer total = Arrays.stream(new Integer[] {2, 3, 5, 2, 5}).reduce(0, (Integer a, Integer b) -> a + b);
+		System.out.println(total);
+	}
+
+	private static void readFromFile() throws IOException {
+		Stream<String> animes = Files.lines(Paths.get("D:\\Study\\GitHub repos\\Java-Learnings\\Java-Learnings\\src\\self\\TextFiles\\Animes"));
+		animes
+			.sorted()
+			.filter(x -> x.contains("o"))
+			.forEach(x -> System.out.println(x));
+		animes.close();
+	}
+	
+	
 }
