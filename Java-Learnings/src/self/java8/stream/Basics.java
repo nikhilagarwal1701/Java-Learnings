@@ -82,6 +82,12 @@ public class Basics {
 			.filter(x -> x.contains("o"))
 			.forEach(x -> System.out.println(x));
 		animes.close();
+		//This will be performed on edited stream
+		anime
+			.filter(x -> x.startsWith("O"))
+			.sorted()
+			.forEach(x -> System.out.println(x));
+		anime.close();
 	}
 	
 	
