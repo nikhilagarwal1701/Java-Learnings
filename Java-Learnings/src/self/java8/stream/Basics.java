@@ -24,7 +24,7 @@ public class Basics {
 
 	private static void arrayStream() {
 		
-		//For arrays (int[]), a data structure, use Arrays.stream or Stream.of
+		//For arrays (int[]), a data structure, use Arrays.stream
 		Arrays.stream(new int[] {4, 2, 6, 3, 1})
 				.filter(x -> x % 2 != 0)
 				.forEach(x -> System.out.println(x));
